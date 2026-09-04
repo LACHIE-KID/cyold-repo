@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Index of /debs/</title>
+    <style>
+        body { font-family: monospace; padding: 20px; background: #fff; color: #000; }
+        h1 { font-size: 20px; border-bottom: 1px solid #ccc; padding-bottom: 5px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { text-align: left; padding: 4px 8px; font-size: 14px; }
+        th { border-bottom: 1px solid #ccc; }
+        a { color: #0000CC; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <h1>Index of /debs</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Size</th>
+        </tr>
+        <tr>
+            <td><a href="../">Parent Directory</a></td>
+            <td>-</td>
+        </tr>
+        <tbody id="file-list"></tbody>
+    </table>
+
+    <script>
+        fetch('https://api.github.com/repos/lachie-kid/Lucky-s-repo/contents/debs')
+            .then(response => response.json())
+            .then(data => {
+                const list = document.getElementById('file-list');
+                data.forEach(file => {
+                    if (file.name !== 'index.html') {
+                        let row = document.createElement('tr');
+                        let sizeKB = file.size ? (file.size / 1024).toFixed(1) + ' KB' : '-';
+                        row.innerHTML = `<td><a href="${file.name}">${file.name}</a></td><td>${sizeKB}</td>`;
+                        list.appendChild(row);
+                    }
+                });
+            });
+    </script>
+</body>
+</html>
