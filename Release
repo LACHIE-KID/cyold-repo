@@ -1,0 +1,8 @@
+Origin: Cyold
+Label: Cyold
+Suite: stable
+Version: 1.0
+Codename: cydia-ios
+Architectures: iphoneos-arm
+Components: main
+Description: Lucky's Cydia Repo for old ios 2 or 3!
